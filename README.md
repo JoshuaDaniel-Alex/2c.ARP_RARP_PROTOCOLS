@@ -20,7 +20,7 @@ P
 Client:
 ```
 # Developed by:Joshua Daniel A
-# Register number:212225040161
+# Register number:212225040161            
 import socket 
 s=socket.socket() 
 s.bind(('localhost',8000)) 
@@ -32,19 +32,19 @@ while True:
     try: 
         c.send(address[ip].encode()) 
     except KeyError: 
-        c.send("Not Found".encode())
+        c.send("Not Found".encode())             
 ```
 Server:
 ```
 # Developed by:Joshua Daniel A
-# Register number:212225040161
+# Register number:212225040161            
 import socket 
 s=socket.socket() 
 s.connect(('localhost',8000)) 
 while True: 
     ip=input("Enter logical Address : ") 
     s.send(ip.encode()) 
-    print("MAC Address",s.recv(1024).decode())
+    print("MAC Address",s.recv(1024).decode())              
 ```
 ## OUPUT - ARP
 Client:
@@ -57,32 +57,40 @@ Server:
 Client:
 ```
 # Developed by:Joshua Daniel A
-# Register number:212225040161
-import socket 
-s=socket.socket() 
-s.bind(('localhost',9000)) 
-s.listen(5)
-c,addr=s.accept() 
-address={"6A:08:AA:C2":"192.168.1.100","8A:BC:E3:FA":"192.168.1.99"}; 
-while True:
-    ip=c.recv(1024).decode()
-try: 
-    c.send(address[ip].encode()) 
-except KeyError: 
-    c.send("Not Found".encode())
+# Register number:212225040161            
+import socket            
+s=socket.socket()            
+s.bind(('localhost',8000))                 
+s.listen(5)            
+c,addr=s.accept()                       
+address={"F8:3D:C6:CE:5B:6E":"10.248.110.146"};             
+while True:              
+    ip=c.recv(1024).decode()            
+    try:                
+       c.send(address[ip].encode())             
+    except KeyError:            
+       c.send("Not Found".encode())               
 ```
 Server:
 ```
 # Developed by:Joshua Daniel A
-# Register number:212225040161
-import socket
-s=socket.socket() 
-s.connect(('localhost',9000))
-while True: 
-    ip=input("Enter MAC Address : ") 
-    s.send(ip.encode()) 
-    print("Logical Address", s.recv(1024).decode())
+# Register number:212225040161            
+import socket           
+s=socket.socket()                
+s.connect(('localhost',8000))                
+while True:               
+    ip=input("Enter MAC Address : ")                
+    s.send(ip.encode())                   
+    print("IP Address",s.recv(1024).decode())                
 ```
+## OUTPUT - RARP:
+Client:
+<img width="1919" height="339" alt="image" src="https://github.com/user-attachments/assets/6c1b261c-d59e-4d2d-abc3-5f0a1259103c" />
+
+Server:
+<img width="1919" height="327" alt="Screenshot 2026-05-25 211533" src="https://github.com/user-attachments/assets/c543aa62-07e5-41d6-9851-fd6a18ed4a7e" />
+
+
 ## RESULT
 Thus, the python program for simulating ARP protocols using TCP was successfully 
 executed.
